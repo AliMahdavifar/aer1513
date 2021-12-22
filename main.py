@@ -202,7 +202,13 @@ plotTrajectory(T_post, k1, k2)
 def e(x_op: np.ndarray):
 
     pass
-xop
+
+e = np.concatenate((e_v0, e_v, e_y), axis=0)
+
+H_v0 = np.zeros((6, (k2 - k1 + 1) * 6)) # TODO: define k1 and k2
+H_v0[:6, :6] = np.eye(6)
+H_v = np.zeros(((k2 - k1) * 6, (k2 - k1 + 1) * 6)) # TODO: update H_v
+H_y = np.zeros((np.prod(G.shape[0:3]), (k2 - k1 + 1) * 6)) # TODO: define G
 
 A = H.transpose @ np.linalg.inv(W) @ H
 b = H.transpose @ np.linalg.inv(W) @ e(xop)
